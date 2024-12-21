@@ -4,6 +4,10 @@ import NotFoundPage from "../pages/NotFoundPage";
 import HomePage from "../pages/HomePage";
 import SignupPage from "../pages/SignupPage";
 import LoginPage from "../pages/LoginPage";
+import AddLostAndFoundItemPage from "../pages/AddLostAndFoundItemPage";
+import AllRecoveredItemsPage from "../pages/AllRecoveredItemsPage";
+import ManageMyItemsPage from "../pages/ManageMyItemsPage";
+import LostAndFoundItemsPage from "../pages/LostAndFoundItemsPage";
 
 export const router = createBrowserRouter([
   {
@@ -22,6 +26,22 @@ export const router = createBrowserRouter([
       {
         path: "/signup",
         element: <SignupPage />,
+      },
+      {
+        path: "/allItems",
+        element: <LostAndFoundItemsPage />,
+      },
+      {
+        path: "/addItems",
+        element: <AddLostAndFoundItemPage />,
+      },
+      {
+        path: "/allRecovered",
+        element: <AllRecoveredItemsPage />,
+      },
+      {
+        path: "/myItems",
+        element: <ManageMyItemsPage />,
       },
     ],
   },

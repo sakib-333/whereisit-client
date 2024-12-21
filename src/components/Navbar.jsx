@@ -56,19 +56,6 @@ const Navbar = () => {
       </div>
       <div className="navbar-end flex gap-2">
         {user ? (
-          // <>
-          //   <img
-          //     data-tooltip-id="my-tooltip"
-          //     data-tooltip-content={user?.displayName}
-          //     className="w-12 h-12 rounded-full"
-          //     src={user?.photoURL || defaultUserIcon}
-          //     alt="photo"
-          //   />
-          //   <button className="btn" onClick={handleSignout}>
-          //     Logout
-          //   </button>
-          //   <Tooltip id="my-tooltip" />
-          // </>
           <>
             <div className="dropdown relative">
               <div tabIndex={0} role="button">
