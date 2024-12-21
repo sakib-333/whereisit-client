@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { AuthContext } from "../provider/AuthContext";
 import { Navigate, useLocation } from "react-router-dom";
 import LoadingSpinner from "./LoadingSpinner";
@@ -15,7 +15,7 @@ const PrivateRoute = ({ children }) => {
     return children;
   }
 
-  return <Navigate to={"/signin"} state={pathname} />;
+  return <Navigate to={"/login"} state={pathname} />;
 };
 
 export default PrivateRoute;

@@ -88,10 +88,7 @@ const SignupPage = () => {
             </div>
             <p className="text-center">
               <span>Already have an account? Sign in </span>
-              <Link
-                className="text-primary hover:text-secondary"
-                to={"/signin"}
-              >
+              <Link className="text-primary hover:text-secondary" to={"/login"}>
                 here
               </Link>
             </p>

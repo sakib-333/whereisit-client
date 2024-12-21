@@ -18,7 +18,7 @@ const LoginPage = () => {
         </div>
         <div className="card w-full bg-white max-w-sm shrink-0 shadow-2xl">
           <form className="card-body" onSubmit={handleSignin}>
-            <h1 className="text-center font-bold text-xl">Sign in</h1>
+            <h1 className="text-center font-bold text-xl">Login</h1>
             <div className="form-control">
               <label className="label font-bold">
                 <span className="label-text font-bold">Email</span>
