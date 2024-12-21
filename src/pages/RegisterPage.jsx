@@ -5,9 +5,8 @@ import GoogleSignin from "../components/GoogleSignin";
 import { Link } from "react-router-dom";
 import Lottie from "lottie-react";
 import useSignup from "../hooks/useSignup";
-import { AuthContext } from "../provider/AuthContext";
 
-const SignupPage = () => {
+const RegisterPage = () => {
   const [seePassword, setSeePassword] = useState(false);
   const [passErrMsg, setPassErrMsg] = useState(null);
   const handleSignup = useSignup();
@@ -23,10 +22,10 @@ const SignupPage = () => {
             className="card-body bg-white"
             onSubmit={(e) => handleSignup(e, setPassErrMsg)}
           >
-            <h1 className="text-center font-bold text-xl">Sign up</h1>
+            <h1 className="text-center font-bold text-xl">Register</h1>
             <div className="form-control">
               <label className="label font-bold">
-                <span className="label-text font-bold">Full Name</span>
+                <span className="label-text font-bold">Name</span>
               </label>
               <input
                 type="text"
@@ -34,6 +33,18 @@ const SignupPage = () => {
                 className="input input-bordered"
                 required
                 name="displayName"
+              />
+            </div>
+            <div className="form-control">
+              <label className="label font-bold">
+                <span className="label-text font-bold">Email</span>
+              </label>
+              <input
+                type="email"
+                placeholder="Enter email..."
+                className="input input-bordered"
+                required
+                name="email"
               />
             </div>
             <div className="form-control">
@@ -48,18 +59,7 @@ const SignupPage = () => {
                 name="photoURL"
               />
             </div>
-            <div className="form-control">
-              <label className="label font-bold">
-                <span className="label-text font-bold">Your Email</span>
-              </label>
-              <input
-                type="email"
-                placeholder="Enter email..."
-                className="input input-bordered"
-                required
-                name="email"
-              />
-            </div>
+
             <div className="form-control relative">
               <label className="label font-bold">
                 <span className="label-text font-bold">Password</span>
@@ -83,11 +83,11 @@ const SignupPage = () => {
               )}
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Sign up</button>
+              <button className="btn btn-primary">Register</button>
               <GoogleSignin />
             </div>
             <p className="text-center">
-              <span>Already have an account? Sign in </span>
+              <span>Already have an account? Login </span>
               <Link className="text-primary hover:text-secondary" to={"/login"}>
                 here
               </Link>
@@ -99,4 +99,4 @@ const SignupPage = () => {
   );
 };
 
-export default SignupPage;
+export default RegisterPage;

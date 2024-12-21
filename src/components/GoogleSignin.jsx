@@ -2,14 +2,19 @@ import React, { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../provider/AuthContext";
 import { toast } from "react-toastify";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const GoogleSignin = () => {
   const { setLoading, signinWithGoogle } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const destination = location.state || "/";
 
   const handleSigninWithGoogle = () => {
     signinWithGoogle()
       .then(() => {
         toast.success(`Welcome back! Glad to see you again.`);
+        navigate(destination);
       })
       .catch((err) => {
         toast.error(`${err}`);

@@ -51,14 +51,14 @@ const LoginPage = () => {
               </button>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Sign in</button>
+              <button className="btn btn-primary">Login</button>
               <GoogleSignin />
             </div>
             <p className="text-center">
-              <span>Don't have an account? Sign up </span>
+              <span>Don't have an account? Register </span>
               <Link
                 className="text-primary hover:text-secondary"
-                to={"/signup"}
+                to={"/register"}
               >
                 here
               </Link>

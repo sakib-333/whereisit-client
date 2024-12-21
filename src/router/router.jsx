@@ -2,13 +2,13 @@ import { createBrowserRouter } from "react-router-dom";
 import HomeLayout from "../layouts/HomeLayout";
 import NotFoundPage from "../pages/NotFoundPage";
 import HomePage from "../pages/HomePage";
-import SignupPage from "../pages/SignupPage";
 import LoginPage from "../pages/LoginPage";
 import AddLostAndFoundItemPage from "../pages/AddLostAndFoundItemPage";
 import AllRecoveredItemsPage from "../pages/AllRecoveredItemsPage";
 import ManageMyItemsPage from "../pages/ManageMyItemsPage";
 import LostAndFoundItemsPage from "../pages/LostAndFoundItemsPage";
 import PrivateRoute from "../components/PrivateRoute";
+import RegisterPage from "../pages/RegisterPage";
 
 export const router = createBrowserRouter([
   {
@@ -25,8 +25,8 @@ export const router = createBrowserRouter([
         element: <LoginPage />,
       },
       {
-        path: "/signup",
-        element: <SignupPage />,
+        path: "/register",
+        element: <RegisterPage />,
       },
       {
         path: "/allItems",
