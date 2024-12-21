@@ -6,7 +6,7 @@ import GoogleSignin from "../components/GoogleSignin";
 import { Link } from "react-router-dom";
 import useSignin from "../hooks/useSignin";
 
-const SigninPage = () => {
+const LoginPage = () => {
   const [seePassword, setSeePassword] = useState(false);
   const handleSignin = useSignin();
 
@@ -70,4 +70,4 @@ const SigninPage = () => {
   );
 };
 
-export default SigninPage;
+export default LoginPage;

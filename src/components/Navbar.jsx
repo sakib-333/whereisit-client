@@ -14,6 +14,9 @@ const Navbar = () => {
       <li>
         <NavLink to={"/"}>Home</NavLink>
       </li>
+      <li>
+        <NavLink to={"/allItems"}>Lost & Found Items</NavLink>
+      </li>
     </>
   );
 
@@ -44,41 +47,64 @@ const Navbar = () => {
             {navItems}
           </ul>
         </div>
-        <h1 className="font-bold text-xl">PH B10 A11</h1>
+        <h1 className="font-bold text-xl bg-gradient-to-r from-black via-purple-600 to-red-500 text-transparent bg-clip-text">
+          WhereIsIt
+        </h1>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end flex gap-2">
         {user ? (
-          <div className="flex gap-1">
-            <img
-              data-tooltip-id="my-tooltip"
-              data-tooltip-content={user?.displayName}
-              className="w-12 h-12 rounded-full"
-              src={user?.photoURL || defaultUserIcon}
-              alt="photo"
-            />
+          // <>
+          //   <img
+          //     data-tooltip-id="my-tooltip"
+          //     data-tooltip-content={user?.displayName}
+          //     className="w-12 h-12 rounded-full"
+          //     src={user?.photoURL || defaultUserIcon}
+          //     alt="photo"
+          //   />
+          //   <button className="btn" onClick={handleSignout}>
+          //     Logout
+          //   </button>
+          //   <Tooltip id="my-tooltip" />
+          // </>
+          <>
+            <div className="dropdown relative">
+              <div tabIndex={0} role="button">
+                <img
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-content={user?.displayName}
+                  className="w-12 h-12 rounded-full"
+                  src={user?.photoURL || defaultUserIcon}
+                  alt="photo"
+                />
+
+                <Tooltip id="my-tooltip" />
+              </div>
+              <ul
+                tabIndex={0}
+                className="dropdown-content menu bg-base-100 rounded-box absolute -right-[90px] top-16 z-[10] w-52 p-2 shadow"
+              >
+                <li>
+                  <NavLink to={"/addItems"}>Add Lost & Found Item</NavLink>
+                </li>
+                <li>
+                  <NavLink to={"/allRecovered"}>All Recovered Items</NavLink>
+                </li>
+                <li>
+                  <NavLink to={"/myItems"}>Manage My Items</NavLink>
+                </li>
+              </ul>
+            </div>
             <button className="btn" onClick={handleSignout}>
               Logout
             </button>
-            <Tooltip id="my-tooltip" />
-          </div>
-        ) : (
-          <>
-            <Link
-              className="btn bg-primary text-white border-none"
-              to={"/signin"}
-            >
-              Signin
-            </Link>
-            <Link
-              className="btn bg-success text-white border-none"
-              to={"/signup"}
-            >
-              Signup
-            </Link>
           </>
+        ) : (
+          <Link className="btn bg-primary text-white border-none" to={"/login"}>
+            Login
+          </Link>
         )}
       </div>
     </div>
