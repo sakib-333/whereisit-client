@@ -4,15 +4,20 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../provider/AuthContext";
 import useAddLostAndFoundItem from "../hooks/useAddLostAndFoundItem";
+import useGoback from "../hooks/useGoback";
 
 const AddLostAndFoundItemPage = () => {
   const [startDate, setStartDate] = useState(new Date());
   const { user } = useContext(AuthContext);
   const handleAddLostAndFoundItem = useAddLostAndFoundItem();
+  const handleGoback = useGoback();
   return (
     <div className="p-4">
       <div>
-        <button className="px-4 w-fit flex items-center gap-1 py-2 bg-sky-500 text-white font-bold hover:bg-sky-600 rounded-lg">
+        <button
+          className="px-4 w-fit flex items-center gap-1 py-2 bg-sky-500 text-white font-bold hover:bg-sky-600 rounded-lg"
+          onClick={handleGoback}
+        >
           <IoMdArrowRoundBack /> <span>Back</span>
         </button>
       </div>
