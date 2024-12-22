@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import lostAndFoundImg from "../assets/lost-and-found.jpg";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import useGoback from "../hooks/useGoback";
+import RecoveryModal from "../components/RecoveryModal";
 
 const PostDetailsPage = () => {
   const handleGoback = useGoback();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="p-4">
@@ -65,10 +67,14 @@ const PostDetailsPage = () => {
           </span>
           {/* Contact info end */}
         </div>
-        <button className="w-full bg-primary text-white hover:text-black btn">
+        <button
+          className="w-full bg-primary text-white hover:text-black btn"
+          onClick={() => setIsOpen((c) => !c)}
+        >
           Found This!
         </button>
       </div>
+      {isOpen && <RecoveryModal setIsOpen={setIsOpen} />}
     </div>
   );
 };
