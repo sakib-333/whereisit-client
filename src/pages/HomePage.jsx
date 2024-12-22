@@ -1,6 +1,7 @@
 import React from "react";
 import Banner from "../components/Banner";
 import LatestFindAndLostItems from "../components/LatestFindAndLostItems";
+import AboutUs from "../components/AboutUs";
 
 const HomePage = () => {
   return (
@@ -8,6 +9,7 @@ const HomePage = () => {
       <Banner />
       <div className="px-2">
         <LatestFindAndLostItems />
+        <AboutUs />
       </div>
     </div>
   );

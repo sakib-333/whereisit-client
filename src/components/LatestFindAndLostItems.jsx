@@ -9,9 +9,9 @@ const LatestFindAndLostItems = () => {
       <h1 className="text-center font-bold text-3xl md:text-4xl lg:text-5xl my-8 underline">
         Latest Find & Lost Items
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
         {items.map((item) => (
-          <div key={item} className="card card-compact bg-base-100 shadow-xl">
+          <div key={item} className="card card-compact bg-base-100">
             <figure>
               <img
                 src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
