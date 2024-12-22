@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ManageMyItemsPage = () => {
   return (
@@ -31,7 +32,9 @@ const ManageMyItemsPage = () => {
               <td>Wallet</td>
               <td>10/12/2024</td>
               <td className="flex gap-1">
-                <button className="btn btn-xs btn-warning">Update</button>
+                <Link to={`/updateItems/5`} className="btn btn-xs btn-warning">
+                  Update
+                </Link>
                 <button className="btn btn-xs btn-error">Delete</button>
               </td>
             </tr>

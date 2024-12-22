@@ -10,6 +10,7 @@ import LostAndFoundItemsPage from "../pages/LostAndFoundItemsPage";
 import PrivateRoute from "../components/PrivateRoute";
 import RegisterPage from "../pages/RegisterPage";
 import PostDetailsPage from "../pages/PostDetailsPage";
+import UpdateItemPage from "../pages/UpdateItemPage";
 
 export const router = createBrowserRouter([
   {
@@ -62,6 +63,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <PostDetailsPage />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/updateItems/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateItemPage />
           </PrivateRoute>
         ),
       },
