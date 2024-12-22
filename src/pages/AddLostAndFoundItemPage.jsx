@@ -3,10 +3,12 @@ import DatePicker from "react-datepicker";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../provider/AuthContext";
+import useAddLostAndFoundItem from "../hooks/useAddLostAndFoundItem";
 
 const AddLostAndFoundItemPage = () => {
   const [startDate, setStartDate] = useState(new Date());
   const { user } = useContext(AuthContext);
+  const handleAddLostAndFoundItem = useAddLostAndFoundItem();
   return (
     <div className="p-4">
       <div>
@@ -18,7 +20,10 @@ const AddLostAndFoundItemPage = () => {
         <h1 className="text-xl md:text-2xl lg:text-3xl text-center font-bold">
           Add Lost or Found Item
         </h1>
-        <form className="w-full grid lg:grid-cols-2 gap-4 items-center">
+        <form
+          className="w-full grid lg:grid-cols-2 gap-4 items-center"
+          onSubmit={handleAddLostAndFoundItem}
+        >
           {/* Post type start */}
           <label className="form-control w-full">
             <div className="label">
@@ -27,10 +32,10 @@ const AddLostAndFoundItemPage = () => {
             <select
               name="postType"
               required
-              defaultValue={"DEFAULT"}
+              defaultValue={""}
               className="select select-bordered"
             >
-              <option disabled value={"DEFAULT"}>
+              <option disabled value={""}>
                 Select one
               </option>
               <option value="lost">Lost</option>
@@ -77,10 +82,10 @@ const AddLostAndFoundItemPage = () => {
             <select
               required
               name="category"
-              defaultValue={"DEFAULT"}
+              defaultValue={""}
               className="select select-bordered"
             >
-              <option disabled value={"DEFAULT"}>
+              <option disabled value={""}>
                 Select one
               </option>
               <option value="pet">Pet</option>
@@ -110,7 +115,7 @@ const AddLostAndFoundItemPage = () => {
           {/* Date start */}
           <label className="form-control w-full">
             <div className="label">
-              <span className="label-text font-bold">Location</span>
+              <span className="label-text font-bold">Date</span>
             </div>
             <DatePicker
               className="w-full h-12 px-1 rounded-lg"
@@ -161,6 +166,7 @@ const AddLostAndFoundItemPage = () => {
             <input
               type="file"
               name="thumbnail"
+              required
               className="file-input file-input-bordered w-full"
             />
           </label>
