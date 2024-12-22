@@ -6,6 +6,7 @@ import documentImage from "../assets/document.svg";
 import phoneImage from "../assets/phone.svg";
 import walletImage from "../assets/wallet.svg";
 import { easeInOut } from "motion";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -19,7 +20,7 @@ const Banner = () => {
       }}
     >
       <div className="px-4 md:px-12 w-full min-h-screen flex flex-col-reverse md:flex-row items-center justify-center">
-        <div className="md:flex-1 space-y-4 mt-8 sm:mt-0">
+        <div className="flex flex-col md:flex-1 space-y-4 mt-8 sm:mt-0">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">
             Lost Something?
           </h1>
@@ -30,9 +31,12 @@ const Banner = () => {
             Connect with your community to reunite items with their rightful
             owners.
           </p>
-          <button className="px-4 py-2 bg-sky-500 text-white font-bold hover:bg-sky-600 rounded-lg">
+          <a
+            href="#about-us"
+            className="px-4 w-fit py-2 bg-sky-500 text-white font-bold hover:bg-sky-600 rounded-lg"
+          >
             Learn More
-          </button>
+          </a>
         </div>
         <div className="flex items-center justify-center md:flex-1 my-8 md:my-0">
           <motion.img
