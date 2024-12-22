@@ -120,7 +120,7 @@ const AddLostAndFoundItemPage = () => {
           {/* Date start */}
           <label className="form-control w-full">
             <div className="label">
-              <span className="label-text font-bold">Date</span>
+              <span className="label-text font-bold">Date Lost</span>
             </div>
             <DatePicker
               className="w-full h-12 px-1 rounded-lg"
@@ -181,7 +181,7 @@ const AddLostAndFoundItemPage = () => {
             type="submit"
             className="w-full btn btn-primary lg:col-span-2"
           >
-            Add
+            Add Post
           </button>
         </form>
       </div>
