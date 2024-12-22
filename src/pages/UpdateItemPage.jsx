@@ -3,10 +3,12 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import useGoback from "../hooks/useGoback";
 import DatePicker from "react-datepicker";
 import { AuthContext } from "../provider/AuthContext";
+import useUpdateItem from "../hooks/useUpdateItem";
 
 const UpdateItemPage = () => {
   const [startDate, setStartDate] = useState(new Date());
   const { user } = useContext(AuthContext);
+  const handleUpdateItem = useUpdateItem();
   const handleGoback = useGoback();
   return (
     <div className="p-4">
@@ -22,7 +24,10 @@ const UpdateItemPage = () => {
         <h1 className="text-xl md:text-2xl lg:text-3xl text-center font-bold">
           Update Item
         </h1>
-        <form className="w-full grid lg:grid-cols-2 gap-4 items-center">
+        <form
+          className="w-full grid lg:grid-cols-2 gap-4 items-center"
+          onSubmit={handleUpdateItem}
+        >
           {/* Post type start */}
           <label className="form-control w-full">
             <div className="label">
