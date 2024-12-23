@@ -1,5 +1,6 @@
 import React from "react";
 import lostAndFoudImage from "../assets/lost-and-found.jpg";
+import FramerMotion from "./FramerMotion";
 
 const AboutUs = () => {
   return (
@@ -19,18 +20,14 @@ const AboutUs = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div>
-            <img
-              src={lostAndFoudImage}
-              alt="Lost and Found Illustration"
-              className="rounded-lg shadow-lg"
-            />
+            <FramerMotion />
           </div>
 
           <div>
             <h3 className="text-2xl font-semibold text-gray-800 mb-4">
               Our Mission
             </h3>
-            <p className="text-gray-600 leading-relaxed">
+            <p className="text-gray-600 leading-relaxed text-justify">
               Our mission is simple: to make it easier for people to reunite
               with their misplaced or lost items. Whether it’s a wallet, keys,
               or something sentimental, we strive to provide a reliable and
