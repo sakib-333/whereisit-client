@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
-const items = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+import useFetchAllItems from "../hooks/useFetchAllItems";
+import { AuthContext } from "../provider/AuthContext";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const LostAndFoundItemsPage = () => {
-  return (
+  const { dataLoading } = useContext(AuthContext);
+  const [allItems, setAllItems] = useState([]);
+  const fetchedData = useFetchAllItems();
+
+  useEffect(() => {
+    setAllItems(fetchedData);
+  }, [fetchedData]);
+
+  useEffect(() => {
+    console.log(allItems);
+  }, [allItems]);
+
+  return dataLoading ? (
+    <LoadingSpinner />
+  ) : (
     <div className="px-4 pb-8">
       <form className="w-full border py-8 flex items-center justify-center">
         <input
@@ -14,22 +29,29 @@ const LostAndFoundItemsPage = () => {
         />
       </form>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
-        {items.map((item) => (
-          <div key={item} className="card card-compact w-full bg-base-100">
+        {allItems.map((item) => (
+          <div key={item._id} className="card card-compact w-full bg-base-100">
             <figure>
               <img
-                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                alt="Shoes"
+                src={item?.thumbnail}
+                className="w-[200px] h-[200px]"
+                alt="thumbnail"
               />
             </figure>
             <div className="card-body">
-              <h2 className="card-title">Shoes!</h2>
-              <p>If a dog chews shoes whose shoes does he choose?</p>
-              <p>
-                <strong>Category: </strong>Pet
-              </p>
+              <h2 className="card-title">{item?.title}</h2>
+              <div className="flex">
+                <p>
+                  <strong>Category: </strong>
+                  {item?.category}
+                </p>
+                <p>
+                  <strong>Post type: </strong>
+                  {item?.postType}
+                </p>
+              </div>
               <div className="card-actions justify-end">
-                <Link to={"/items/5"} className="btn btn-primary">
+                <Link to={`/items/${item._id}`} className="btn btn-primary">
                   View Details
                 </Link>
               </div>
