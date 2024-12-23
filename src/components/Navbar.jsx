@@ -67,7 +67,7 @@ const Navbar = () => {
                   alt="photo"
                 />
 
-                <Tooltip id="my-tooltip" />
+                <Tooltip className="z-10" id="my-tooltip" />
               </div>
               <ul
                 tabIndex={0}
