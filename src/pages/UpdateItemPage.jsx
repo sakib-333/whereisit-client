@@ -46,10 +46,25 @@ const UpdateItemPage = () => {
               <option value="found">Found</option>
             </select>
           </label>
-          {/* Post type start */}
+          {/* Post type end */}
+
+          {/* Thumbnail start */}
+          <label className="form-control w-full">
+            <div className="label">
+              <span className="label-text font-bold">Thumbnail</span>
+            </div>
+            <input
+              type="text"
+              name="thumbnail"
+              placeholder="Thumbnail URL"
+              required
+              className="input input-bordered w-full"
+            />
+          </label>
+          {/* Thumbnail end */}
 
           {/* Title start */}
-          <label className="form-control w-full">
+          <label className="form-control w-full lg:col-span-2">
             <div className="label">
               <span className="label-text font-bold">Title</span>
             </div>
@@ -64,17 +79,18 @@ const UpdateItemPage = () => {
           {/* Title end */}
 
           {/* Description start */}
-          <label className="form-control w-full">
+          <label className="form-control w-full lg:col-span-2">
             <div className="label">
               <span className="label-text font-bold">Description</span>
             </div>
-            <input
+            <textarea
+              rows={5}
               type="text"
               name="description"
               required
-              placeholder="A black dog found"
-              className="input input-bordered w-full"
-            />
+              placeholder="Clear description of the item."
+              className="textarea textarea-bordered w-full"
+            ></textarea>
           </label>
           {/* Description end */}
 
@@ -162,19 +178,6 @@ const UpdateItemPage = () => {
             />
           </label>
           {/* Email end */}
-          {/* Thumbnail start */}
-          <label className="form-control w-full lg:col-span-2">
-            <div className="label">
-              <span className="label-text font-bold">Pick a file</span>
-            </div>
-            <input
-              type="file"
-              name="thumbnail"
-              required
-              className="file-input file-input-bordered w-full"
-            />
-          </label>
-          {/* Thumbnail end */}
 
           <button
             type="submit"
