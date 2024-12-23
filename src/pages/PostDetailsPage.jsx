@@ -1,14 +1,29 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import lostAndFoundImg from "../assets/lost-and-found.jpg";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import useGoback from "../hooks/useGoback";
 import RecoveryModal from "../components/RecoveryModal";
+import { useParams } from "react-router-dom";
+import useFetchItem from "../hooks/useFetchItem";
+import { AuthContext } from "../provider/AuthContext";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const PostDetailsPage = () => {
+  const { dataLoading } = useContext(AuthContext);
   const handleGoback = useGoback();
   const [isOpen, setIsOpen] = useState(false);
+  const { id } = useParams();
+  const itemDetails = useFetchItem(id);
 
-  return (
+  if (itemDetails?.date) {
+    const date = new Date(`${itemDetails.date}`);
+    const formattedDate = date.toISOString().split("T")[0];
+    itemDetails.date = formattedDate;
+  }
+
+  return dataLoading ? (
+    <LoadingSpinner />
+  ) : (
     <div className="p-4">
       <button
         className="px-4 w-fit flex items-center gap-1 py-2 bg-sky-500 text-white font-bold hover:bg-sky-600 rounded-lg"
@@ -19,51 +34,52 @@ const PostDetailsPage = () => {
       <div className="max-w-5xl mx-auto p-4 mt-4 border border-black space-y-4">
         <img
           className="max-w-sm mx-auto"
-          src={lostAndFoundImg}
+          src={itemDetails?.thumbnail}
           alt="thumbnail"
         />
         {/* Title start */}
         <h1 className="text-xl">
-          <strong>Title:</strong> Found alert
+          <strong>Title:</strong> {itemDetails?.title}
         </h1>
         {/* Title end */}
         {/* Description start */}
         <h1 className="text-xl font-bold">Description:</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam
-          exercitationem, cum aspernatur neque dolores maiores tempora minima
-          nisi. Minima molestiae nostrum minus eum corrupti eveniet laborum id
-          nisi nam recusandae!
-        </p>
+        <p className="text-justify">{itemDetails?.description}</p>
         {/* Description start */}
-        <div className="grid grid-cols-1 md:grid-cols-2 space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Post type start */}
           <h1 className="text-xl">
-            <strong>Post type: </strong>Found
+            <strong>Post type: </strong>
+            {itemDetails?.postType}
           </h1>
           {/* Post type end */}
           {/* Category start */}
           <h1 className="text-xl">
-            <strong>Category: </strong>Pet
+            <strong>Category: </strong>
+            {itemDetails?.category}
           </h1>
           {/* Category end */}
           {/* Location start */}
           <h1 className="text-xl">
-            <strong>Location: </strong>Banani, Dhaka
+            <strong>Location: </strong>
+            {itemDetails?.location}
           </h1>
           {/* Location end */}
           {/* Date lost start */}
           <h1 className="text-xl">
-            <strong>Date lost: </strong>10/12/2024
+            <strong>Date lost: </strong>
+            {itemDetails?.date}
           </h1>
           {/* Date lost end */}
           {/* Contact info star */}
           <h1 className="text-xl font-bold md:col-span-2">Contact info:</h1>
           <span>
-            <strong>Name: </strong>Sakibur Rahman
+            <strong>Name: </strong>
+            {itemDetails?.displayName}
           </span>
           <span>
-            <strong>Email: </strong>sakib@gmail.com
+            <strong>Email: </strong>
+            {itemDetails?.email}
           </span>
           {/* Contact info end */}
         </div>
@@ -71,7 +87,7 @@ const PostDetailsPage = () => {
           className="w-full bg-primary text-white hover:text-black btn"
           onClick={() => setIsOpen((c) => !c)}
         >
-          Found This!
+          {itemDetails?.postType == "lost" ? "Found This!" : "This is Mine!"}
         </button>
       </div>
       {isOpen && <RecoveryModal setIsOpen={setIsOpen} />}
