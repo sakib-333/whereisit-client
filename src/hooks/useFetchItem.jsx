@@ -17,7 +17,7 @@ const useFetchItem = (item_id) => {
         setItemDetails(res.data);
       })
       .catch(() => toast.error("Something went wrong."))
-      .finally(setDataLoading(false));
+      .finally(()=>setDataLoading(false));
   }, []);
 
   return itemDetails;
