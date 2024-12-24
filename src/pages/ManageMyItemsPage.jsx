@@ -1,15 +1,17 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import useFetchMyItems from "../hooks/useFetchMyItems";
 import { AuthContext } from "../provider/AuthContext";
 import LoadingSpinner from "../components/LoadingSpinner";
 import NoDataFound from "../components/NoDataFound";
 import useFomatDate from "../hooks/useFomatDate";
+import useDeleteItem from "../hooks/useDeleteItem";
+import useFetchMyItems from "../hooks/useFetchMyItems";
 
 const ManageMyItemsPage = () => {
   const myItems = useFetchMyItems();
   const { dataLoading } = useContext(AuthContext);
   const formatDate = useFomatDate();
+  const handleDeleteItem = useDeleteItem();
 
   return dataLoading ? (
     <LoadingSpinner />
@@ -52,7 +54,12 @@ const ManageMyItemsPage = () => {
                   >
                     Update
                   </Link>
-                  <button className="btn btn-xs btn-error">Delete</button>
+                  <button
+                    className="btn btn-xs btn-error"
+                    onClick={() => handleDeleteItem(item?._id)}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}

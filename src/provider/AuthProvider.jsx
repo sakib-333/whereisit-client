@@ -14,7 +14,7 @@ import useAxios from "../hooks/useAxios";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [myNotes, setMyNotes] = useState([]);
+  const [myItems, setMyItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [dataLoading, setDataLoading] = useState(false);
   const axiosInstance = useAxios();
@@ -78,8 +78,8 @@ const AuthProvider = ({ children }) => {
   const authInfo = {
     user,
     setUser,
-    myNotes,
-    setMyNotes,
+    myItems,
+    setMyItems,
     loading,
     setLoading,
     dataLoading,

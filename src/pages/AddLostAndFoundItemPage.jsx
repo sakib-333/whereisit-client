@@ -136,7 +136,7 @@ const AddLostAndFoundItemPage = () => {
           {/* Date start */}
           <label className="form-control w-full">
             <div className="label">
-              <span className="label-text font-bold">Date Lost</span>
+              <span className="label-text font-bold">Date lost/found</span>
             </div>
             <DatePicker
               className="w-full h-12 px-1 rounded-lg"

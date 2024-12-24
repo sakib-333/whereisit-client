@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../provider/AuthContext";
 import useAxios from "./useAxios";
 import { toast } from "react-toastify";
 
 const useFetchMyItems = () => {
-  const [myItems, setMyItems] = useState([]);
-  const { user, setDataLoading } = useContext(AuthContext);
+  const { user, setDataLoading, myItems, setMyItems } = useContext(AuthContext);
   const axiosInstance = useAxios();
 
   useEffect(() => {
