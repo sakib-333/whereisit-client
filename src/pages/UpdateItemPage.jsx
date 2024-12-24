@@ -1,15 +1,28 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import useGoback from "../hooks/useGoback";
 import DatePicker from "react-datepicker";
 import { AuthContext } from "../provider/AuthContext";
 import useUpdateItem from "../hooks/useUpdateItem";
+import { useParams } from "react-router-dom";
+import useFetchItem from "../hooks/useFetchItem";
 
 const UpdateItemPage = () => {
+  const { id } = useParams();
   const [startDate, setStartDate] = useState(new Date());
   const { user } = useContext(AuthContext);
   const handleUpdateItem = useUpdateItem();
   const handleGoback = useGoback();
+  const itemDetails = useFetchItem(id);
+  const [selPostType, setSelPostType] = useState("");
+  const [selCate, setSelCate] = useState("");
+
+  useEffect(() => {
+    setStartDate(itemDetails.date);
+    setSelPostType(itemDetails.postType);
+    setSelCate(itemDetails.category);
+  }, [itemDetails]);
+
   return (
     <div className="p-4">
       <div>
@@ -26,7 +39,7 @@ const UpdateItemPage = () => {
         </h1>
         <form
           className="w-full grid lg:grid-cols-2 gap-4 items-center"
-          onSubmit={handleUpdateItem}
+          onSubmit={(e) => handleUpdateItem(e, id)}
         >
           {/* Post type start */}
           <label className="form-control w-full">
@@ -36,7 +49,8 @@ const UpdateItemPage = () => {
             <select
               name="postType"
               required
-              defaultValue={""}
+              value={selPostType}
+              onChange={(e) => setSelPostType(e.target.value)}
               className="select select-bordered"
             >
               <option disabled value={""}>
@@ -59,6 +73,7 @@ const UpdateItemPage = () => {
               placeholder="Thumbnail URL"
               required
               className="input input-bordered w-full"
+              defaultValue={itemDetails?.thumbnail}
             />
           </label>
           {/* Thumbnail end */}
@@ -74,6 +89,7 @@ const UpdateItemPage = () => {
               required
               placeholder="Found alert"
               className="input input-bordered w-full"
+              defaultValue={itemDetails?.title}
             />
           </label>
           {/* Title end */}
@@ -90,6 +106,7 @@ const UpdateItemPage = () => {
               required
               placeholder="Clear description of the item."
               className="textarea textarea-bordered w-full"
+              defaultValue={itemDetails?.description}
             ></textarea>
           </label>
           {/* Description end */}
@@ -102,7 +119,8 @@ const UpdateItemPage = () => {
             <select
               required
               name="category"
-              defaultValue={""}
+              value={selCate}
+              onChange={(e) => setSelCate(e.target.value)}
               className="select select-bordered"
             >
               <option disabled value={""}>
@@ -127,6 +145,7 @@ const UpdateItemPage = () => {
               type="text"
               name="location"
               placeholder="Banani, Dhaka"
+              defaultValue={itemDetails?.location}
               className="input input-bordered w-full"
             />
           </label>
