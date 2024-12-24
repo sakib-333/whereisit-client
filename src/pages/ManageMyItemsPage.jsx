@@ -4,10 +4,12 @@ import useFetchMyItems from "../hooks/useFetchMyItems";
 import { AuthContext } from "../provider/AuthContext";
 import LoadingSpinner from "../components/LoadingSpinner";
 import NoDataFound from "../components/NoDataFound";
+import useFomatDate from "../hooks/useFomatDate";
 
 const ManageMyItemsPage = () => {
   const myItems = useFetchMyItems();
   const { dataLoading } = useContext(AuthContext);
+  const formatDate = useFomatDate();
 
   return dataLoading ? (
     <LoadingSpinner />
@@ -42,7 +44,7 @@ const ManageMyItemsPage = () => {
                 </td>
                 <td>{item?.category}</td>
                 <td>{item?.postType}</td>
-                <td>{item?.date}</td>
+                <td>{formatDate(item?.date)}</td>
                 <td className="flex gap-1">
                   <Link
                     to={`/updateItems/${item?._id}`}

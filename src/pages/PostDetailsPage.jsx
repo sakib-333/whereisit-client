@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import lostAndFoundImg from "../assets/lost-and-found.jpg";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import useGoback from "../hooks/useGoback";
 import RecoveryModal from "../components/RecoveryModal";
@@ -7,6 +6,7 @@ import { useParams } from "react-router-dom";
 import useFetchItem from "../hooks/useFetchItem";
 import { AuthContext } from "../provider/AuthContext";
 import LoadingSpinner from "../components/LoadingSpinner";
+import useFomatDate from "../hooks/useFomatDate";
 
 const PostDetailsPage = () => {
   const { dataLoading } = useContext(AuthContext);
@@ -14,12 +14,7 @@ const PostDetailsPage = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { id } = useParams();
   const itemDetails = useFetchItem(id);
-
-  if (itemDetails?.date) {
-    const date = new Date(`${itemDetails.date}`);
-    const formattedDate = date.toISOString().split("T")[0];
-    itemDetails.date = formattedDate;
-  }
+  const formatDate = useFomatDate();
 
   return dataLoading ? (
     <LoadingSpinner />
@@ -68,7 +63,7 @@ const PostDetailsPage = () => {
           {/* Date lost start */}
           <h1 className="text-xl">
             <strong>Date lost: </strong>
-            {itemDetails?.date}
+            {itemDetails?.date && formatDate(itemDetails?.date)}
           </h1>
           {/* Date lost end */}
           {/* Contact info star */}
