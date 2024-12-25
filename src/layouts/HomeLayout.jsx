@@ -7,7 +7,7 @@ const HomeLayout = () => {
   return (
     <div className="max-w-screen-2xl mx-auto">
       <Navbar />
-      <div className="min-h-screen bg-base-300">
+      <div className="min-h-screen bg-gray-300">
         <Outlet />
       </div>
       <Footer />

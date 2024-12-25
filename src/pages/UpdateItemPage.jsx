@@ -1,18 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
-import { IoMdArrowRoundBack } from "react-icons/io";
-import useGoback from "../hooks/useGoback";
 import DatePicker from "react-datepicker";
 import { AuthContext } from "../provider/AuthContext";
 import useUpdateItem from "../hooks/useUpdateItem";
 import { useParams } from "react-router-dom";
 import useFetchItem from "../hooks/useFetchItem";
+import Goback from "../components/GoBack";
 
 const UpdateItemPage = () => {
   const { id } = useParams();
   const [startDate, setStartDate] = useState(new Date());
   const { user } = useContext(AuthContext);
   const handleUpdateItem = useUpdateItem();
-  const handleGoback = useGoback();
   const itemDetails = useFetchItem(id);
   const [selPostType, setSelPostType] = useState("");
   const [selCate, setSelCate] = useState("");
@@ -26,12 +24,13 @@ const UpdateItemPage = () => {
   return (
     <div className="p-4">
       <div>
-        <button
+        {/* <button
           className="px-4 w-fit flex items-center gap-1 py-2 bg-sky-500 text-white font-bold hover:bg-sky-600 rounded-lg"
           onClick={handleGoback}
         >
           <IoMdArrowRoundBack /> <span>Back</span>
-        </button>
+        </button> */}
+        <Goback />
       </div>
       <div className="max-w-5xl mx-auto p-4 mt-4 border border-black rounded-lg">
         <h1 className="text-xl md:text-2xl lg:text-3xl text-center font-bold">
@@ -197,6 +196,19 @@ const UpdateItemPage = () => {
             />
           </label>
           {/* Email end */}
+          {/* Phone number start */}
+          <label className="form-control w-full">
+            <div className="label">
+              <span className="label-text font-bold">Phone number</span>
+            </div>
+            <input
+              type="text"
+              name="phone"
+              placeholder="Optional"
+              className="input input-bordered w-full"
+            />
+          </label>
+          {/* Phone number end */}
 
           <button
             type="submit"

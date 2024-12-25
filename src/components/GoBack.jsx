@@ -1,7 +1,7 @@
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
-const useGoback = () => {
+const Goback = () => {
   const navigate = useNavigate();
   const handleGoback = () => navigate(-1);
 
@@ -15,4 +15,4 @@ const useGoback = () => {
   );
 };
 
-export default useGoback;
+export default Goback;

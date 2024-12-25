@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import useFetchLatestItems from "../hooks/useFetchLatestItems";
+import useFomatDate from "../hooks/useFomatDate";
+import { motion } from "motion/react";
 
 const LatestFindAndLostItems = () => {
   const latestItems = useFetchLatestItems();
+  const formatDate = useFomatDate();
 
   return (
     <div className="mt-20 px-4">
@@ -12,39 +15,44 @@ const LatestFindAndLostItems = () => {
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
         {latestItems.map((item) => (
-          <div key={item._id} className="card card-compact w-full bg-base-100">
-            <figure>
-              <img
-                src={item?.thumbnail}
-                className="w-[200px] h-[200px]"
-                alt="thumbnail"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">{item?.title}</h2>
-              <div className="flex">
-                <p>
-                  <strong>Category: </strong>
-                  {item?.category}
-                </p>
-                <p>
-                  <strong>Post type: </strong>
-                  {item?.postType}
-                </p>
-              </div>
-              <div className="card-actions justify-end">
-                <Link to={`/items/${item._id}`} className="btn btn-primary">
-                  View Details
-                </Link>
-              </div>
+          <motion.div
+            whileHover={{ scale: 1.01 }}
+            transition={{ duration: 0.3 }}
+            key={item._id}
+            className="bg-gray-600 text-white w-full mx-auto p-4 max-w-80 space-y-3"
+          >
+            <h1 className=" text-xl truncate">{item?.title}</h1>
+            <img
+              className="w-full aspect-square"
+              src={item?.thumbnail}
+              alt="thumbnail"
+            />
+            <div className="flex justify-between">
+              <h1 className="text-xs">Post type: {item?.postType}</h1>
+              <h1 className="text-xs">Category: {item?.category}</h1>
             </div>
-          </div>
+            <div className="flex justify-between">
+              <h1 className="text-xs">
+                {item.postType === "lost" ? "Lost" : "Found"}:{" "}
+                {formatDate(item?.date)}
+              </h1>
+              <h1 className="text-xs">Location: {item?.location}</h1>
+            </div>
+            <div>
+              <Link
+                className="px-4 py-1 border border-white hover:text-gray-400"
+                to={`/items/${item._id}`}
+              >
+                View Details
+              </Link>
+            </div>
+          </motion.div>
         ))}
       </div>
       <div className="mt-8 flex justify-center">
         <Link
           to={"/allItems"}
-          className="px-4 py-2 bg-sky-500 text-white font-bold hover:bg-sky-600 rounded-lg"
+          className="px-4 py-2 bg-gray-600 text-white font-bold hover:bg-gray-500 rounded-lg"
         >
           See all
         </Link>

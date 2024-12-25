@@ -5,34 +5,36 @@ import { AuthContext } from "../provider/AuthContext";
 import LoadingSpinner from "../components/LoadingSpinner";
 import useSearchItem from "../hooks/useSearchItem";
 import NoDataFound from "../components/NoDataFound";
+import useFomatDate from "../hooks/useFomatDate";
+import { motion } from "motion/react";
 
 const LostAndFoundItemsPage = () => {
   const { dataLoading } = useContext(AuthContext);
   const [allItems, setAllItems] = useState([]);
-  const [key, setKey] = useState("");
+  const [key, setKey] = useState(null);
   const fetchedData = useFetchAllItems();
   const handleSearchItems = useSearchItem();
+  const formatDate = useFomatDate();
 
   useEffect(() => {
     setAllItems(fetchedData);
-  }, [fetchedData]);
-
-  useEffect(() => {
     const timerID = setTimeout(() => {
-      handleSearchItems(key, setAllItems);
+      if (key !== null) {
+        handleSearchItems(key, setAllItems);
+      }
     }, 1000);
 
     return () => clearTimeout(timerID);
-  }, [key]);
+  }, [fetchedData, key]);
 
   return (
     <div className="px-4 pb-8">
-      <div className="w-full border py-8 flex items-center justify-center">
+      <div className="w-full py-8 flex items-center justify-center">
         <input
           onChange={(e) => setKey(e.target.value)}
           type="text"
           placeholder="Post title or location"
-          className="input input-bordered input-primary w-full max-w-xs"
+          className="input input-bordered bg-gray-100 w-full max-w-xs"
         />
       </div>
       {dataLoading ? (
@@ -42,36 +44,38 @@ const LostAndFoundItemsPage = () => {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
           {allItems.map((item) => (
-            <div
+            <motion.div
               key={item._id}
-              className="card card-compact w-full bg-base-100"
+              whileHover={{ scale: 1.01 }}
+              transition={{ duration: 0.3 }}
+              className="bg-gray-600 text-white w-full mx-auto p-4 max-w-80 space-y-3"
             >
-              <figure>
-                <img
-                  src={item?.thumbnail}
-                  className="w-[200px] h-[200px]"
-                  alt="thumbnail"
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">{item?.title}</h2>
-                <div className="flex">
-                  <p>
-                    <strong>Category: </strong>
-                    {item?.category}
-                  </p>
-                  <p>
-                    <strong>Post type: </strong>
-                    {item?.postType}
-                  </p>
-                </div>
-                <div className="card-actions justify-end">
-                  <Link to={`/items/${item._id}`} className="btn btn-primary">
-                    View Details
-                  </Link>
-                </div>
+              <h1 className=" text-xl truncate">{item?.title}</h1>
+              <img
+                className="w-full aspect-square"
+                src={item?.thumbnail}
+                alt="thumbnail"
+              />
+              <div className="flex justify-between">
+                <h1 className="text-xs">Post type: {item?.postType}</h1>
+                <h1 className="text-xs">Category: {item?.category}</h1>
               </div>
-            </div>
+              <div className="flex justify-between">
+                <h1 className="text-xs">
+                  {item.postType === "lost" ? "Lost" : "Found"}:{" "}
+                  {formatDate(item?.date)}
+                </h1>
+                <h1 className="text-xs">Location: {item?.location}</h1>
+              </div>
+              <div>
+                <Link
+                  className="px-4 py-1 border border-white hover:text-gray-400"
+                  to={`/items/${item._id}`}
+                >
+                  View Details
+                </Link>
+              </div>
+            </motion.div>
           ))}
         </div>
       )}

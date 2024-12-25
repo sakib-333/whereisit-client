@@ -3,13 +3,16 @@ import useFetchMyRecoveredItems from "../hooks/useFetchMyRecoveredItems";
 import { AuthContext } from "../provider/AuthContext";
 import LoadingSpinner from "../components/LoadingSpinner";
 import NoDataFound from "../components/NoDataFound";
-import { FaListUl } from "react-icons/fa";
+import { FaCheck, FaListUl } from "react-icons/fa";
 import { FaTableCellsLarge } from "react-icons/fa6";
+import Goback from "../components/GoBack";
+import useFomatDate from "../hooks/useFomatDate";
 
 const AllRecoveredItemsPage = () => {
   const { dataLoading } = useContext(AuthContext);
   const myRecovItms = useFetchMyRecoveredItems();
   const [viewType, setViewType] = useState("table");
+  const formatDate = useFomatDate();
 
   return dataLoading ? (
     <LoadingSpinner />
@@ -17,54 +20,56 @@ const AllRecoveredItemsPage = () => {
     <NoDataFound />
   ) : (
     <div className="p-8">
+      <Goback />
       <div className="mb-4 flex justify-end">
         <div className="join">
           <button
             onClick={() => setViewType("layout")}
-            className={`btn join-item ${
-              viewType === "layout" ? "bg-slate-400" : ""
-            }`}
+            className="btn join-item"
           >
-            <FaListUl />
+            {viewType === "layout" && <FaCheck />} <FaListUl />
           </button>
           <button
             onClick={() => setViewType("table")}
-            className={`btn join-item ${
-              viewType === "table" ? "bg-slate-400" : ""
-            }`}
+            className="btn join-item"
           >
+            {viewType === "table" && <FaCheck />}
             <FaTableCellsLarge />
           </button>
         </div>
       </div>
       {viewType === "table" && (
         <div className="overflow-x-auto bg-slate-300">
-          <table className="table table-zebra">
-            {/* head */}
-            <thead className="bg-slate-100">
-              <tr className="text-primary">
-                <th>#</th>
-                <th>Thumbnail</th>
-                <th>Post type</th>
-                <th>Recovered location</th>
-                <th>Recovered date</th>
+          <table className="table">
+            <thead className="text-center border border-black">
+              <tr className="text-primary border border-black">
+                <th className="border border-black">#</th>
+                <th className="border border-black">Thumbnail</th>
+                <th className="border border-black">Post type</th>
+                <th className="border border-black">Recovered location</th>
+                <th className="border border-black ">Recovered date</th>
               </tr>
             </thead>
-            <tbody>
-              {/* row 1 */}
+            <tbody className="text-center">
               {myRecovItms.map((recovItm, indx) => (
-                <tr key={recovItm._id}>
-                  <th>{indx + 1}</th>
-                  <td>
+                <tr key={recovItm._id} className="border border-black">
+                  <th className="border border-black">{indx + 1}</th>
+                  <td className="border border-black">
                     <img
-                      className="w-12 h-12 rounded-full"
-                      src={recovItm.item.thumbnail}
+                      className="w-12 h-12 rounded-full mx-auto"
+                      src={recovItm?.item?.thumbnail}
                       alt="thumbnail"
                     />
                   </td>
-                  <td>{recovItm.item.postType}</td>
-                  <td>{recovItm.recovLocation}</td>
-                  <td>{recovItm.recovDate}</td>
+                  <td className="border border-black">
+                    {recovItm?.item?.postType}
+                  </td>
+                  <td className="border border-black">
+                    {recovItm?.recovLocation}
+                  </td>
+                  <td className="border border-black">
+                    {formatDate(recovItm?.recovDate)}
+                  </td>
                 </tr>
               ))}
             </tbody>

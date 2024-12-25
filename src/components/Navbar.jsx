@@ -4,6 +4,7 @@ import { AuthContext } from "../provider/AuthContext";
 import defaultUserIcon from "../assets/defaultUser.svg";
 import { Tooltip } from "react-tooltip";
 import useSignout from "../hooks/useSignout";
+import questionMark from "/questionMark.svg";
 
 const Navbar = () => {
   const { user } = useContext(AuthContext);
@@ -21,7 +22,8 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-violet-300">
+    // bg-violet-300
+    <div className="navbar bg-teal-400">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -47,9 +49,20 @@ const Navbar = () => {
             {navItems}
           </ul>
         </div>
-        <h1 className="font-bold text-xl bg-gradient-to-r from-black via-purple-600 to-red-500 text-transparent bg-clip-text">
-          WhereIsIt
-        </h1>
+        <div className="flex items-center">
+          <img className="w-12 h-12" src={questionMark} alt="" />
+          <h1 className="font-bold text-xl">
+            <span className="text-[#FF5733]">W</span>
+            <span className="text-[#FF5733]">h</span>
+            <span className="text-[#FF5733]">e</span>
+            <span className="text-[#FF5733]">r</span>
+            <span className="text-[#FF5733]">e</span>
+            <span className="text-[#3357FF]">I</span>
+            <span className="text-[#3357FF]">s</span>
+            <span className="text-[#1D3557]">I</span>
+            <span className="text-[#1D3557]">t</span>
+          </h1>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navItems}</ul>
