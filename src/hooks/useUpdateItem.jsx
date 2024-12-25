@@ -34,7 +34,6 @@ const useUpdateItem = () => {
         displayName,
         email,
         thumbnail,
-        status: "not recovered",
       },
     };
 

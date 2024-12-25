@@ -1,18 +1,62 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import DatePicker from "react-datepicker";
+import { AuthContext } from "../provider/AuthContext";
+import useAxios from "../hooks/useAxios";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
-const RecoveryModal = ({ setIsOpen }) => {
+const RecoveryModal = ({ setIsOpen, item }) => {
+  const { user } = useContext(AuthContext);
   const [startDate, setStartDate] = useState(new Date());
+  const axiosInstance = useAxios();
+  const { _id } = item;
 
   const handleSubmitModal = (e) => {
     e.preventDefault();
     setIsOpen((c) => !c);
     const form = e.target;
-    const recoveredLocation = form.recoveredLocation.value;
-    const date = form.date.value;
-    const userEmail = form.userEmail.value;
-    const userName = form.userName.value;
-    const userImage = form.userImage.value;
+    const recovLocation = form.recoveredLocation.value;
+    const recovDate = form.date.value;
+    const recovUserEmail = form.userEmail.value;
+    const recovUserName = form.userName.value;
+    const recovUserImage = form.userImage.value;
+
+    axiosInstance
+      .post(`/updateStatus/${_id}`, { email: user.email })
+      .then((res) => {
+        if (res.data.acknowledged) {
+          const recoveredItem = {
+            item,
+            recovLocation,
+            recovDate,
+            recovUserEmail,
+            recovUserName,
+            recovUserImage,
+          };
+
+          axiosInstance
+            .post("/recoveredItems", { email: user.email, recoveredItem })
+            .then((res) => {
+              if (res.data.acknowledged) {
+                Swal.fire({
+                  title: "Success",
+                  text: "Item recovered successfully",
+                  icon: "success",
+                });
+              }
+            })
+            .catch(() => toast.error("Something went wrong"));
+        } else {
+          Swal.fire({
+            title: "Already recovered",
+            text: "Someone has already been recovered this item.",
+            icon: "error",
+          });
+        }
+      })
+      .catch(() => toast.error("Something went wrong."));
+
+    // console.log(recoveredItem);
 
     // console.log({ recoveredLocation, date, userEmail, userName, userImage });
   };
@@ -35,7 +79,7 @@ const RecoveryModal = ({ setIsOpen }) => {
           </label>
           <label className="form-control w-full">
             <div className="label">
-              <span className="label-text font-bold">Date Lost</span>
+              <span className="label-text font-bold">Given/Receive Date</span>
             </div>
             <DatePicker
               className="w-full h-12 px-1 rounded-lg"
@@ -54,7 +98,7 @@ const RecoveryModal = ({ setIsOpen }) => {
               name="userEmail"
               placeholder="Recovered location"
               className="input input-bordered w-full"
-              defaultValue={"sakib@gmail.com"}
+              defaultValue={user?.email}
               readOnly
             />
           </label>
@@ -67,7 +111,7 @@ const RecoveryModal = ({ setIsOpen }) => {
               name="userName"
               placeholder="Recovered location"
               className="input input-bordered w-full"
-              defaultValue={"Sakibur Rahman"}
+              defaultValue={user?.displayName}
               readOnly
             />
           </label>
@@ -80,7 +124,7 @@ const RecoveryModal = ({ setIsOpen }) => {
               name="userImage"
               placeholder="Recovered location"
               className="input input-bordered w-full"
-              defaultValue={"www.my-photo.com"}
+              defaultValue={user?.photoURL}
               readOnly
             />
           </label>

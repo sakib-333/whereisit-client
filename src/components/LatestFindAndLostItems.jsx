@@ -2,8 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import useFetchLatestItems from "../hooks/useFetchLatestItems";
 
-const items = [1, 2, 3, 4, 5, 6];
-
 const LatestFindAndLostItems = () => {
   const latestItems = useFetchLatestItems();
 

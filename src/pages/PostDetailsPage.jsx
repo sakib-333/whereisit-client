@@ -85,7 +85,7 @@ const PostDetailsPage = () => {
           {itemDetails?.postType == "lost" ? "Found This!" : "This is Mine!"}
         </button>
       </div>
-      {isOpen && <RecoveryModal setIsOpen={setIsOpen} />}
+      {isOpen && <RecoveryModal setIsOpen={setIsOpen} item={itemDetails} />}
     </div>
   );
 };

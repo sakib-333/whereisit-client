@@ -18,10 +18,6 @@ const LostAndFoundItemsPage = () => {
   }, [fetchedData]);
 
   useEffect(() => {
-    console.log(dataLoading);
-  }, [dataLoading]);
-
-  useEffect(() => {
     const timerID = setTimeout(() => {
       handleSearchItems(key, setAllItems);
     }, 1000);
