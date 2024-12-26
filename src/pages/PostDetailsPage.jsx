@@ -20,11 +20,14 @@ const PostDetailsPage = () => {
     <div className="p-4">
       <Goback />
       <div className="max-w-5xl mx-auto p-4 mt-4 border border-black space-y-4">
-        <img
-          className="max-w-sm mx-auto"
-          src={itemDetails?.thumbnail}
-          alt="thumbnail"
-        />
+        <div className="max-w-sm mx-auto">
+          <img
+            className="w-full"
+            src={itemDetails?.thumbnail}
+            alt="thumbnail"
+          />
+        </div>
+
         {/* Title start */}
         <h1 className="text-xl">
           <strong>Title:</strong> {itemDetails?.title}
