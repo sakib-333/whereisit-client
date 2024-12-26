@@ -1,37 +1,59 @@
-# React Project Structure
+# WhereIsIt
 
 ## Description
 
-Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis magni
-modi explicabo rem aut quibusdam itaque velit omnis dolorem, dolore
-provident, quis ab sed voluptatibus nesciunt dolores atque officia eius.
+This project is a Lost and Found Website, a platform designed to connect individuals who have lost personal belongings with those who may have found them. Users can report lost items, browse found items, and interact to recover their belongings. Developing this website provides practical experience in building full-stack applications, user authentication, file uploads, database management, and API integration
 
-## React Fundamental concepts used
+# Purpose
 
-1. JSX
+1. **Reuniting Lost Items with Their Owners:** The primary goal is to help people find their lost belongings and for those who have found items to connect with the rightful owners.
 
-2. State
+2. **Centralized Platform:** Providing a single, easily accessible place for people to report lost items, search for found items, and claim their property.
 
-3. React hooks
+3. **Detailed Information:** Allowing users to provide specific descriptions of lost items (type, color, brand, distinguishing features) and found items to increase the chances of a match.
 
-4. React router
+4. **Efficient Communication:** Facilitating communication between those who have lost items and those who have found them, potentially through email.
 
-## Five key features
+5. **Community Building:** Fostering a sense of community by encouraging people to help each other find lost items.
 
-1. Features-1
+## React fundamental concepts used
 
-2. Features-2
+1. React
 
-3. Features-3
+2. Express(JWT, CORS)
 
-4. Features-4
+3. MongoDB
 
-5. Features-5
+## Key features
 
-## For Data Management
+1. Authentication using firebase.
 
-1. What techonology(Context api, local storage, database) is used to manage data.
+2. Post about lost/found items.
+
+3. Manage my posts(update, delete).
+
+4. Recover items can't be recovered again.
+
+5. How many items I have recovered.
+
+## NPM packages
+
+1. Axios
+
+2. Lottie react
+
+3. Motion
+
+4. React icons
+
+5. React toastify
+
+6. React tooltip
+
+7. Swiper
+
+8. Sweetalert2
 
 ## Live links
 
-1. Live link: [visit](www.demo-project-live-link.com)
+1. Live link: [visit](https://ph-b10-a11.web.app/)
