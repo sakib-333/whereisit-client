@@ -12,7 +12,8 @@ const LostAndFoundItemsPage = () => {
   const { dataLoading } = useContext(AuthContext);
   const [allItems, setAllItems] = useState([]);
   const [key, setKey] = useState("");
-  const { pgCnt, setPgCnt, totalPageCount } = useFetchAllItems(setAllItems);
+  const { pgCnt, setPgCnt, setInit, totalPageCount } =
+    useFetchAllItems(setAllItems);
   const handleSearchItems = useSearchItem();
   const formatDate = useFomatDate();
 
@@ -21,7 +22,7 @@ const LostAndFoundItemsPage = () => {
       if (key !== "") {
         handleSearchItems(key, setAllItems);
       } else {
-        setPgCnt(0);
+        setInit((c) => !c);
       }
     }, 1000);
 

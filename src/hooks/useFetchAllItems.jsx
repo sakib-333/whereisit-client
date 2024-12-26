@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 
 const useFetchAllItems = (setAllItems) => {
   const [pgCnt, setPgCnt] = useState(0);
+  const [init, setInit] = useState(true);
   const [totalPageCount, setTotalPageCount] = useState(0);
   const { setDataLoading } = useContext(AuthContext);
   const axiosInstance = useAxios();
@@ -27,9 +28,9 @@ const useFetchAllItems = (setAllItems) => {
       })
       .catch(() => toast.error("Something went wrong"))
       .finally(() => setDataLoading(false));
-  }, [pgCnt]);
+  }, [init, pgCnt]);
 
-  return { pgCnt, setPgCnt, totalPageCount };
+  return { pgCnt, setInit, setPgCnt, totalPageCount };
 };
 
 export default useFetchAllItems;
