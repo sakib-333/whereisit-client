@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
 
 const HomeLayout = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    if (pathname === "/") {
+      document.title = "Home";
+    } else {
+      document.title = `${pathname.replace("/", "")}`;
+    }
+  }, [pathname]);
+
   return (
     <div className="max-w-screen-2xl mx-auto">
       <Navbar />

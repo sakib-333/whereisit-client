@@ -18,12 +18,6 @@ const PostDetailsPage = () => {
     <LoadingSpinner />
   ) : (
     <div className="p-4">
-      {/* <button
-        className="px-4 w-fit flex items-center gap-1 py-2 bg-sky-500 text-white font-bold hover:bg-sky-600 rounded-lg"
-        onClick={handleGoback}
-      >
-        <IoMdArrowRoundBack /> <span>Back</span>
-      </button> */}
       <Goback />
       <div className="max-w-5xl mx-auto p-4 mt-4 border border-black space-y-4">
         <img
@@ -78,7 +72,7 @@ const PostDetailsPage = () => {
           {/* Contact info end */}
         </div>
         <button
-          className="w-full bg-primary text-white hover:text-black btn"
+          className="w-full btn-primary text-white btn"
           onClick={() => setIsOpen((c) => !c)}
         >
           {itemDetails?.postType == "lost" ? "Found This!" : "This is Mine!"}

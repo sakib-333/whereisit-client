@@ -31,7 +31,7 @@ const ManageMyItemsPage = () => {
               <th className="border border-black">Thumbnail</th>
               <th className="border border-black">Category</th>
               <th className="border border-black">Post type</th>
-              <th className="border border-black ">Lost Date</th>
+              <th className="border border-black">Lost Date</th>
               <th className="border border-black">Actions</th>
             </tr>
           </thead>
@@ -51,7 +51,7 @@ const ManageMyItemsPage = () => {
                 <td className="border border-black">
                   {formatDate(item?.date)}
                 </td>
-                <td>
+                <td className="border border-black">
                   <div className="flex gap-1 justify-center">
                     <Link
                       to={`/updateItems/${item?._id}`}

@@ -12,12 +12,6 @@ const AddLostAndFoundItemPage = () => {
   return (
     <div className="p-4">
       <div>
-        {/* <button
-          className="px-4 w-fit flex items-center gap-1 py-2 bg-sky-500 text-white font-bold hover:bg-sky-600 rounded-lg"
-          onClick={handleGoback}
-        >
-          <IoMdArrowRoundBack /> <span>Back</span>
-        </button> */}
         <Goback />
       </div>
       <div className="max-w-5xl mx-auto p-4 mt-4 border border-black rounded-lg">
@@ -126,7 +120,7 @@ const AddLostAndFoundItemPage = () => {
               required
               type="text"
               name="location"
-              placeholder="Banani, Dhaka"
+              placeholder="Where the item found/lost"
               className="input input-bordered w-full"
             />
           </label>
