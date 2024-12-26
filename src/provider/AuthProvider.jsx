@@ -54,6 +54,7 @@ const AuthProvider = ({ children }) => {
           .post("/jwt", { email: currUser.email })
           .then((res) => {
             console.log(res.data);
+            setLoading(false);
           })
           .catch((err) => console.log(err));
       } else {
@@ -61,10 +62,10 @@ const AuthProvider = ({ children }) => {
           .post("/logout", {})
           .then((res) => {
             console.log(res.data);
+            setLoading(false);
           })
           .catch((err) => console.log(err));
       }
-      setLoading(false);
     });
     return () => unsubscribe();
   }, []);
