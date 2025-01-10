@@ -4,11 +4,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        text: "#16100d",
-        background: "#faf8f5",
-        primary: "#a17863",
-        secondary: "#c6d0af",
-        accent: "#a3bd8f",
+        text: "var(--text)",
+        background: "var(--background)",
+        primary: "var(--primary)",
+        secondary: "var(--secondary)",
+        accent: "var(--accent)",
       },
     },
   },
