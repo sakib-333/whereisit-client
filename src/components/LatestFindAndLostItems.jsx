@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import useFetchLatestItems from "../hooks/useFetchLatestItems";
 import useFomatDate from "../hooks/useFomatDate";
 import { motion } from "motion/react";
+import Heading from "./Heading";
 
 const LatestFindAndLostItems = () => {
   const latestItems = useFetchLatestItems();
@@ -10,9 +11,7 @@ const LatestFindAndLostItems = () => {
 
   return (
     <div className="mt-20 px-4">
-      <h1 className="text-center font-bold text-3xl md:text-4xl lg:text-5xl my-8 underline">
-        Latest Find & Lost Items
-      </h1>
+      <Heading title={"Latest Find & Lost Items"} subtitle="" />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
         {latestItems.map((item) => (
           <motion.div

@@ -27,7 +27,7 @@ const HomeLayout = () => {
   return (
     <div className="max-w-screen-2xl mx-auto">
       <Navbar />
-      <div className="min-h-screen bg-gray-300 relative">
+      <div className="min-h-screen bg-background mt-16 relative">
         <Outlet />
         <button
           className="fixed p-2 rounded-full bottom-4 right-4 z-20 bg-background text-text"

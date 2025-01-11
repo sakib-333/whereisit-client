@@ -23,7 +23,7 @@ const Navbar = () => {
 
   return (
     // bg-violet-300
-    <div className="navbar bg-background">
+    <div className="navbar bg-background text-text border-b-2 border-text fixed z-30 top-0 max-w-screen-2xl">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -59,8 +59,8 @@ const Navbar = () => {
             <span className="text-[#FF5733]">e</span>
             <span className="text-[#3357FF]">I</span>
             <span className="text-[#3357FF]">s</span>
-            <span className="text-[#1D3557]">I</span>
-            <span className="text-[#1D3557]">t</span>
+            <span className="text-[#b2b221]">I</span>
+            <span className="text-[#b2b221]">t</span>
           </h1>
         </div>
       </div>
@@ -102,7 +102,7 @@ const Navbar = () => {
             </button>
           </>
         ) : (
-          <Link className="btn bg-primary text-white border-none" to={"/login"}>
+          <Link className="btn-primary border-none" to={"/login"}>
             Login
           </Link>
         )}

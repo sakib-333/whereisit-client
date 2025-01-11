@@ -5,16 +5,27 @@
 @layer base {
   :root {
     --text: #16100d;
-    --background: #faf8f5;
+    --background: #f0ede9;
     --primary: #a17863;
     --secondary: #c6d0af;
     --accent: #a3bd8f;
+    --footer: #000;
   }
   .dark {
     --text: #f2ece9;
-    --background: #0a0805;
+    --background: #211b11;
     --primary: #9c735e;
     --secondary: #46502f;
     --accent: #567042;
+    --footer: #000;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply btn px-4 py-2 text-text bg-primary hover:bg-secondary text-sm rounded border-none min-h-0 h-10 transition-all;
+  }
+  .text-basic {
+    @apply text-text opacity-65;
   }
 }
