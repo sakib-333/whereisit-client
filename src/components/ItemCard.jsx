@@ -11,7 +11,7 @@ const ItemCard = ({ item }) => {
     <motion.div
       whileHover={{ scale: 1.01 }}
       transition={{ duration: 0.3 }}
-      className="text-text p-2 max-w-[300px] bg-background border border-text rounded-md"
+      className="text-text p-2 w-full max-w-[300px] bg-background border border-text rounded-md"
     >
       <div className="flex items-center gap-1">
         <img className="w-9 h-9 rounded-full bg-text" src={user} />

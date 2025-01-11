@@ -1,58 +1,44 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import useFetchLatestItems from "../hooks/useFetchLatestItems";
-import useFomatDate from "../hooks/useFomatDate";
-import { motion } from "motion/react";
 import Heading from "./Heading";
+import ItemCard from "./ItemCard";
+import { useQuery } from "@tanstack/react-query";
+import useAxios from "../hooks/useAxios";
+import LoadingSpinner from "./LoadingSpinner";
 
 const LatestFindAndLostItems = () => {
-  const latestItems = useFetchLatestItems();
-  const formatDate = useFomatDate();
+  const axiosInstance = useAxios();
+  const {
+    data: latestItems = [],
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["latestItems"],
+    queryFn: async () => {
+      const res = await axiosInstance.post("/latestItems");
+      return res.data;
+    },
+  });
+
+  if (isError) {
+    return (
+      <h1 className="text-center text-xl font-bold">Sorry! No data found.</h1>
+    );
+  }
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
 
   return (
-    <div className="mt-20 px-4">
+    <div className="mt-20 px-4" style={{ minHeight: "50vh" }}>
       <Heading title={"Latest Find & Lost Items"} subtitle="" />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+      <div className="justify-items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
         {latestItems.map((item) => (
-          <motion.div
-            whileHover={{ scale: 1.01 }}
-            transition={{ duration: 0.3 }}
-            key={item._id}
-            className="bg-gray-600 text-white w-full mx-auto p-4 max-w-80 space-y-3"
-          >
-            <h1 className=" text-xl truncate">{item?.title}</h1>
-            <img
-              className="w-full aspect-square"
-              src={item?.thumbnail}
-              alt="thumbnail"
-            />
-            <div className="flex justify-between">
-              <h1 className="text-xs">Post type: {item?.postType}</h1>
-              <h1 className="text-xs">Category: {item?.category}</h1>
-            </div>
-            <div className="flex justify-between">
-              <h1 className="text-xs">
-                {item.postType === "lost" ? "Lost" : "Found"}:{" "}
-                {formatDate(item?.date)}
-              </h1>
-              <h1 className="text-xs">Location: {item?.location}</h1>
-            </div>
-            <div>
-              <Link
-                className="px-4 py-1 border border-white hover:text-gray-400"
-                to={`/items/${item._id}`}
-              >
-                View Details
-              </Link>
-            </div>
-          </motion.div>
+          <ItemCard item={item} key={item._id} />
         ))}
       </div>
       <div className="mt-8 flex justify-center">
-        <Link
-          to={"/allItems"}
-          className="px-4 py-2 bg-gray-600 text-white font-bold hover:bg-gray-500 rounded-lg"
-        >
+        <Link to={"/allItems"} className="btn-primary">
           See all
         </Link>
       </div>
