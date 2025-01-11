@@ -1,12 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import useFetchAllItems from "../hooks/useFetchAllItems";
 import { AuthContext } from "../provider/AuthContext";
 import LoadingSpinner from "../components/LoadingSpinner";
 import useSearchItem from "../hooks/useSearchItem";
 import NoDataFound from "../components/NoDataFound";
-import useFomatDate from "../hooks/useFomatDate";
-import { motion } from "motion/react";
 import ItemCard from "../components/ItemCard";
 
 const LostAndFoundItemsPage = () => {
@@ -16,7 +13,6 @@ const LostAndFoundItemsPage = () => {
   const { pgCnt, setPgCnt, setInit, totalPageCount } =
     useFetchAllItems(setAllItems);
   const handleSearchItems = useSearchItem();
-  const formatDate = useFomatDate();
 
   useEffect(() => {
     const timerID = setTimeout(() => {
@@ -46,7 +42,7 @@ const LostAndFoundItemsPage = () => {
         <NoDataFound />
       ) : (
         <div className="mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 justify-center">
+          <div className="grid justify-items-center grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 justify-center">
             {allItems.map((item) => (
               <ItemCard key={item._id} item={item} />
             ))}

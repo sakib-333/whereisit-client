@@ -2,36 +2,23 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Heading from "./Heading";
 import ItemCard from "./ItemCard";
-import { useQuery } from "@tanstack/react-query";
-import useAxios from "../hooks/useAxios";
 import LoadingSpinner from "./LoadingSpinner";
+import useFetchData from "../hooks/useFetchData";
 
 const LatestFindAndLostItems = () => {
-  const axiosInstance = useAxios();
   const {
-    data: latestItems = [],
+    data: latestItems,
     isLoading,
     isError,
-  } = useQuery({
-    queryKey: ["latestItems"],
-    queryFn: async () => {
-      const res = await axiosInstance.post("/latestItems");
-      return res.data;
-    },
-  });
-
-  if (isError) {
-    return (
-      <h1 className="text-center text-xl font-bold">Sorry! No data found.</h1>
-    );
-  }
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
+  } = useFetchData("latestItems", "/latestItems");
 
   return (
     <div className="mt-20 px-4" style={{ minHeight: "50vh" }}>
       <Heading title={"Latest Find & Lost Items"} subtitle="" />
+      {isLoading && <LoadingSpinner />}
+      {isError && (
+        <h1 className="text-center text-xl font-bold">Something went wrong.</h1>
+      )}
       <div className="justify-items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
         {latestItems.map((item) => (
           <ItemCard item={item} key={item._id} />
