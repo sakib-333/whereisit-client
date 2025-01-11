@@ -21,6 +21,7 @@ const useAddLostAndFoundItem = () => {
     const displayName = form.displayName.value;
     const email = form.email.value;
     const thumbnail = form.thumbnail.value;
+    const photoURL = user?.photoURL;
 
     const data = {
       email: user.email,
@@ -35,6 +36,7 @@ const useAddLostAndFoundItem = () => {
         email,
         thumbnail,
         status: "not recovered",
+        photoURL,
       },
     };
 
