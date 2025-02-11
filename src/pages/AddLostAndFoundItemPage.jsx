@@ -10,11 +10,11 @@ const AddLostAndFoundItemPage = () => {
   const { user } = useContext(AuthContext);
   const handleAddLostAndFoundItem = useAddLostAndFoundItem();
   return (
-    <div className="p-4">
-      <div>
-        <Goback />
-      </div>
-      <div className="max-w-5xl mx-auto p-4 mt-4 border border-black rounded-lg">
+    <div className="p-4 text-text">
+      <div className="max-w-5xl mx-auto p-4 mt-4 rounded-lg">
+        <div>
+          <Goback />
+        </div>
         <h1 className="text-xl md:text-2xl lg:text-3xl text-center font-bold">
           Add Lost or Found Item
         </h1>
@@ -25,13 +25,13 @@ const AddLostAndFoundItemPage = () => {
           {/* Post type start */}
           <label className="form-control w-full">
             <div className="label">
-              <span className="label-text font-bold">Post type</span>
+              <span className="font-bold">Post type</span>
             </div>
             <select
               name="postType"
               required
               defaultValue={""}
-              className="select select-bordered"
+              className="select bg-background border border-text"
             >
               <option disabled value={""}>
                 Select one
@@ -45,14 +45,14 @@ const AddLostAndFoundItemPage = () => {
           {/* Thumbnail start */}
           <label className="form-control w-full">
             <div className="label">
-              <span className="label-text font-bold">Thumbnail</span>
+              <span className="font-bold">Thumbnail</span>
             </div>
             <input
               type="text"
               name="thumbnail"
               placeholder="Thumbnail URL"
               required
-              className="input input-bordered w-full"
+              className="input bg-background border border-text w-full"
             />
           </label>
           {/* Thumbnail end */}
@@ -60,14 +60,14 @@ const AddLostAndFoundItemPage = () => {
           {/* Title start */}
           <label className="form-control w-full lg:col-span-2">
             <div className="label">
-              <span className="label-text font-bold">Title</span>
+              <span className="font-bold">Title</span>
             </div>
             <input
               type="text"
               name="title"
               required
               placeholder="Found/Lost alert"
-              className="input input-bordered w-full"
+              className="input bg-background border border-text w-full"
             />
           </label>
           {/* Title end */}
@@ -75,7 +75,7 @@ const AddLostAndFoundItemPage = () => {
           {/* Description start */}
           <label className="form-control w-full lg:col-span-2">
             <div className="label">
-              <span className="label-text font-bold">Description</span>
+              <span className="font-bold">Description</span>
             </div>
             <textarea
               rows={5}
@@ -83,7 +83,7 @@ const AddLostAndFoundItemPage = () => {
               name="description"
               required
               placeholder="Clear description of the item."
-              className="textarea textarea-bordered w-full"
+              className="textarea bg-background border border-text w-full"
             ></textarea>
           </label>
           {/* Description end */}
@@ -91,13 +91,13 @@ const AddLostAndFoundItemPage = () => {
           {/* Category start */}
           <label className="form-control w-full">
             <div className="label">
-              <span className="label-text font-bold">Category</span>
+              <span className="font-bold">Category</span>
             </div>
             <select
               required
               name="category"
               defaultValue={""}
-              className="select select-bordered"
+              className="select bg-background border border-text"
             >
               <option disabled value={""}>
                 Select one
@@ -114,14 +114,14 @@ const AddLostAndFoundItemPage = () => {
           {/* Location start */}
           <label className="form-control w-full">
             <div className="label">
-              <span className="label-text font-bold">Location</span>
+              <span className="font-bold">Location</span>
             </div>
             <input
               required
               type="text"
               name="location"
               placeholder="Where the item found/lost"
-              className="input input-bordered w-full"
+              className="input bg-background border border-text w-full"
             />
           </label>
           {/* Location end */}
@@ -129,10 +129,10 @@ const AddLostAndFoundItemPage = () => {
           {/* Date start */}
           <label className="form-control w-full">
             <div className="label">
-              <span className="label-text font-bold">Date lost/found</span>
+              <span className="font-bold">Date lost/found</span>
             </div>
             <DatePicker
-              className="w-full h-12 px-1 rounded-lg"
+              className="w-full h-12 px-1 rounded-lg bg-background border border-text"
               selected={startDate}
               onChange={(date) => setStartDate(date)}
               name="date"
@@ -143,7 +143,7 @@ const AddLostAndFoundItemPage = () => {
           {/* Display name start */}
           <label className="form-control w-full">
             <div className="label">
-              <span className="label-text font-bold">Display name</span>
+              <span className="font-bold">Display name</span>
             </div>
             <input
               type="text"
@@ -152,7 +152,7 @@ const AddLostAndFoundItemPage = () => {
               readOnly
               value={user?.displayName}
               placeholder="Sakibur Rahman"
-              className="input input-bordered w-full"
+              className="input bg-background border border-text w-full"
             />
           </label>
           {/* Display name end */}
@@ -160,7 +160,7 @@ const AddLostAndFoundItemPage = () => {
           {/* Email start */}
           <label className="form-control w-full">
             <div className="label">
-              <span className="label-text font-bold">Contact Email</span>
+              <span className="font-bold">Contact Email</span>
             </div>
             <input
               type="email"
@@ -168,20 +168,20 @@ const AddLostAndFoundItemPage = () => {
               readOnly
               value={user?.email}
               placeholder="sakib@gmail.com"
-              className="input input-bordered w-full"
+              className="input bg-background border border-text w-full"
             />
           </label>
           {/* Email end */}
           {/* Phone number start */}
           <label className="form-control w-full">
             <div className="label">
-              <span className="label-text font-bold">Phone number</span>
+              <span className="font-bold">Phone number</span>
             </div>
             <input
               type="text"
               name="phone"
               placeholder="Optional"
-              className="input input-bordered w-full"
+              className="input bg-background border border-text w-full"
             />
           </label>
           {/* Phone number end */}

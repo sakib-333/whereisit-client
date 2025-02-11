@@ -1,5 +1,11 @@
 import React from "react";
-import { FaFacebook, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaGithub,
+  FaLinkedin,
+  FaTwitter,
+} from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -24,30 +30,33 @@ const Footer = () => {
         </nav>
         <nav>
           <h6 className="footer-title">About us</h6>
-          <a className="link link-hover" href="#">
-            Blogs
-          </a>
-          <a className="link link-hover" href="#">
-            Important links
-          </a>
-          <a className="link link-hover" href="#">
-            Jobs
-          </a>
+          <Link to={"/about"} className="link link-hover">
+            About
+          </Link>
+          <Link to={"/contact"} className="link link-hover" href="#">
+            Contact
+          </Link>
         </nav>
         <nav>
           <h6 className="footer-title">Social</h6>
           <div className="grid grid-flow-col gap-4">
-            <a href="#" className="hover:opacity-50">
+            <a
+              href="https://www.facebook.com/sakib071"
+              className="hover:opacity-50"
+            >
               <FaFacebook />
             </a>
-            <a href="#" className="hover:opacity-50">
+            <a href="https://github.com/sakib-333" className="hover:opacity-50">
               <FaGithub />
             </a>
-            <a href="#" className="hover:opacity-50">
+            <a href="https://x.com/sakib_333x" className="hover:opacity-50">
               <FaTwitter />
             </a>
-            <a href="#" className="hover:opacity-50">
-              <FaInstagram />
+            <a
+              href="www.linkedin.com/in/sakibur-rahman"
+              className="hover:opacity-50"
+            >
+              <FaLinkedin />
             </a>
           </div>
         </nav>

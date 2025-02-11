@@ -55,7 +55,7 @@ const Navbar = () => {
             {navItems}
           </ul>
         </div>
-        <div className="flex items-center">
+        <Link to={"/"} className="flex items-center">
           <img className="w-12 h-12" src={questionMark} alt="" />
           <h1 className="font-bold text-xl">
             <span className="text-[#FF5733]">W</span>
@@ -68,7 +68,7 @@ const Navbar = () => {
             <span className="text-[#b2b221]">I</span>
             <span className="text-[#b2b221]">t</span>
           </h1>
-        </div>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navItems}</ul>
@@ -90,7 +90,7 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="dropdown-content menu bg-base-100 rounded-box absolute -right-[90px] top-16 z-[10] w-52 p-2 shadow"
+                className="dropdown-content text-text border border-text menu bg-background rounded-box absolute -right-[90px] top-16 z-[10] w-52 p-2 shadow"
               >
                 <li>
                   <NavLink to={"/addItems"}>Add Lost & Found Item</NavLink>
