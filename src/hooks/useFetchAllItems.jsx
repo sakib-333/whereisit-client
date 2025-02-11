@@ -14,7 +14,7 @@ const useFetchAllItems = (setAllItems) => {
     axiosInstance
       .get("/totalData")
       .then((res) => {
-        setTotalPageCount(Math.ceil(res?.data?.totalData) / 9);
+        setTotalPageCount(Math.ceil(res?.data?.totalData) / 10);
       })
       .catch(() => cons.log("Something went wrong"));
   }, []);
@@ -22,7 +22,7 @@ const useFetchAllItems = (setAllItems) => {
   useEffect(() => {
     setDataLoading(true);
     axiosInstance
-      .post("/allItems", { pgCnt: pgCnt * 9 })
+      .post("/allItems", { pgCnt: pgCnt * 10 })
       .then((res) => {
         setAllItems(res.data);
       })
