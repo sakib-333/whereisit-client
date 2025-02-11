@@ -12,6 +12,7 @@ import RegisterPage from "../pages/RegisterPage";
 import PostDetailsPage from "../pages/PostDetailsPage";
 import UpdateItemPage from "../pages/UpdateItemPage";
 import AboutPage from "../pages/AboutPage";
+import ContactPage from "../pages/ContactPage";
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
       {
         path: "/about",
         element: <AboutPage />,
+      },
+      {
+        path: "/contact",
+        element: <ContactPage />,
       },
       {
         path: "/addItems",
