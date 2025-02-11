@@ -23,7 +23,7 @@ const GoogleSignin = () => {
   };
   return (
     <div className="w-full">
-      <div className="divider">Or</div>
+      <div className="divider before:bg-text after:bg-text">Or</div>
       <button
         type="button"
         className="w-full flex items-center btn"
