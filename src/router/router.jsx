@@ -11,6 +11,7 @@ import PrivateRoute from "../components/PrivateRoute";
 import RegisterPage from "../pages/RegisterPage";
 import PostDetailsPage from "../pages/PostDetailsPage";
 import UpdateItemPage from "../pages/UpdateItemPage";
+import AboutPage from "../pages/AboutPage";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: "/allItems",
         element: <LostAndFoundItemsPage />,
+      },
+      {
+        path: "/about",
+        element: <AboutPage />,
       },
       {
         path: "/addItems",

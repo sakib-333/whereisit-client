@@ -18,6 +18,9 @@ const Navbar = () => {
       <li>
         <NavLink to={"/allItems"}>Lost & Found Items</NavLink>
       </li>
+      <li>
+        <NavLink to={"/about"}>About</NavLink>
+      </li>
     </>
   );
 
