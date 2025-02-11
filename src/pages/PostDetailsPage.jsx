@@ -17,10 +17,10 @@ const PostDetailsPage = () => {
   return dataLoading ? (
     <LoadingSpinner />
   ) : (
-    <div className="p-4">
-      <Goback />
-      <div className="max-w-5xl mx-auto p-4 mt-4 border border-black space-y-4">
-        <div className="max-w-sm mx-auto">
+    <div className="p-4 bg-background">
+      <div className="max-w-5xl mx-auto p-4 mt-4 space-y-4 text-text">
+        <Goback />
+        <div className="max-w-sm w-full mx-auto">
           <img
             className="w-full"
             src={itemDetails?.thumbnail}
