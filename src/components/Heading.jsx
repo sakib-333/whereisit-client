@@ -2,7 +2,7 @@ import React from "react";
 
 const Heading = ({ title, subtitle = "" }) => {
   return (
-    <div>
+    <div data-aos="zoom-in" data-aos-once="false" data-aos-duration="900">
       <h1 className="text-center text-text font-bold text-3xl md:text-4xl lg:text-5xl my-8 underline">
         {title}
       </h1>

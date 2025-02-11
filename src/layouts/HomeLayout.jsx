@@ -3,6 +3,8 @@ import Navbar from "../components/Navbar";
 import { Outlet, useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
 import { FaMoon, FaSun } from "react-icons/fa";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const HomeLayout = () => {
   const { pathname } = useLocation();
@@ -15,6 +17,10 @@ const HomeLayout = () => {
       document.title = `${pathname.replace("/", "")}`;
     }
   }, [pathname]);
+
+  useEffect(() => {
+    Aos.init();
+  }, []);
 
   useEffect(() => {
     if (isDarkMode) {

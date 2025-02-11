@@ -22,7 +22,7 @@ const PostDetailsPage = () => {
         <Goback />
         <div className="max-w-sm w-full mx-auto">
           <img
-            className="w-full"
+            className="w-full rounded-md"
             src={itemDetails?.thumbnail}
             alt="thumbnail"
           />

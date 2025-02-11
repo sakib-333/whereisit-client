@@ -7,6 +7,7 @@ import { IoLocationSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 const ItemCard = ({ item }) => {
+  console.log(item);
   return (
     <motion.div
       whileHover={{ scale: 1.01 }}
@@ -23,7 +24,7 @@ const ItemCard = ({ item }) => {
       <h1 className="text-xl truncate text-text font-bold">{item?.title}</h1>
       <div>
         <img
-          className="w-full h-[150px] object-cover"
+          className="w-full h-[150px] object-cover rounded-md"
           src={item?.thumbnail}
           alt="thumbnail"
         />

@@ -16,7 +16,7 @@ const useFetchAllItems = (setAllItems) => {
       .then((res) => {
         setTotalPageCount(Math.ceil(res?.data?.totalData) / 10);
       })
-      .catch(() => cons.log("Something went wrong"));
+      .catch(() => console.log("Something went wrong"));
   }, []);
 
   useEffect(() => {

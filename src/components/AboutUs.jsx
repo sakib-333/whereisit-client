@@ -20,7 +20,12 @@ const AboutUs = () => {
             }
           />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div
+          data-aos="fade-up"
+          data-aos-anchor-placement="bottom-bottom"
+          data-aos-duration="900"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
+        >
           <div>
             <FramerMotion />
           </div>
@@ -35,6 +40,7 @@ const AboutUs = () => {
               or something sentimental, we strive to provide a reliable and
               efficient service.
             </p>
+            <div className="divider before:bg-text after:bg-text"></div>
             <h3 className="text-2xl font-semibold text-text mt-8 mb-4">
               Why Choose Us?
             </h3>

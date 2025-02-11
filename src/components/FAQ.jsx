@@ -5,7 +5,12 @@ const FAQ = () => {
   return (
     <div className="mt-20 px-4">
       <Heading title="Frequently Asked Questions" />
-      <div className="space-y-4 pb-8">
+      <div
+        data-aos="fade-up"
+        data-aos-anchor-placement="bottom-bottom"
+        data-aos-duration="1100"
+        className="space-y-4 pb-8"
+      >
         <div className="collapse collapse-arrow bg-background text-text border border-text rounded-sm">
           <input type="radio" name="my-accordion-2" defaultChecked />
           <div className="collapse-title text-xl font-medium">
