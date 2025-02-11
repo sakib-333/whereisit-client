@@ -50,7 +50,7 @@ const Banner = () => {
                 </a>
               </div>
               <img
-                className="mt-4 md:mt-0 w-40 h-40"
+                className="mt-4 hidden md:block md:mt-0 w-40 h-40"
                 src={content.image}
                 alt="pet"
               />

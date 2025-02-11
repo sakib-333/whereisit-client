@@ -7,7 +7,6 @@ import { IoLocationSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 const ItemCard = ({ item }) => {
-  console.log(item);
   return (
     <motion.div
       whileHover={{ scale: 1.01 }}

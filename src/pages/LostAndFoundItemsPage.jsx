@@ -27,13 +27,18 @@ const LostAndFoundItemsPage = () => {
   }, [key]);
 
   return (
-    <div className="px-4 pb-8">
+    <div
+      data-aos="fade-up"
+      data-aos-duration="900"
+      data-aos-once="false"
+      className="px-4 pb-8"
+    >
       <div className="w-full py-8 flex items-center justify-center">
         <input
           onChange={(e) => setKey(e.target.value)}
           type="text"
           placeholder="Post title or location"
-          className="input input-bordered bg-gray-100 w-full max-w-xs"
+          className="input border border-text bg-background w-full max-w-xs"
         />
       </div>
       {dataLoading ? (

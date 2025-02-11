@@ -2,12 +2,19 @@ import React from "react";
 
 const ContactPage = () => {
   return (
-    <div className="min-h-screen bg-background text-text flex items-center justify-center p-6">
+    <div
+      data-aos="fade-up"
+      data-aos-duration="1100"
+      className="min-h-screen bg-background text-text flex items-center justify-center p-6"
+    >
       <div className="max-w-3xl border border-text  shadow-xl rounded-2xl p-8 space-y-6">
-        <h1 className="text-4xl font-bold text-center">Contact Us</h1>
-        <p className="text-lg  text-center">
-          Have any questions or need assistance? Feel free to reach out to us!
-        </p>
+        <div data-aos="zoom-in" data-aos-duration="1100">
+          <h1 className="text-4xl font-bold text-center">Contact Us</h1>
+          <p className="text-lg  text-center">
+            Have any questions or need assistance? Feel free to reach out to us!
+          </p>
+        </div>
+
         <form className="space-y-4">
           <div>
             <label className="block  font-semibold">Your Name</label>
