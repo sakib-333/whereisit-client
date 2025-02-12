@@ -16,11 +16,11 @@ const ItemCard = ({ item }) => {
       <div className="flex items-center gap-1">
         <img className="w-9 h-9 rounded-full bg-text" src={user} />
         <div>
-          <h1 className="font-bold">{item?.displayName}</h1>
+          <h1 className="font-bold text-base truncate">{item?.displayName}</h1>
           <p className="text-[10px]">{formatDate(item?.date)}</p>
         </div>
       </div>
-      <h1 className="text-xl truncate text-text font-bold">{item?.title}</h1>
+      <h1 className="text-base truncate text-text font-bold">{item?.title}</h1>
       <div>
         <img
           className="w-full h-[150px] object-cover rounded-md"
