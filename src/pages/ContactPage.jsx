@@ -9,7 +9,7 @@ const ContactPage = () => {
     >
       <div className="max-w-3xl border border-text  shadow-xl rounded-2xl p-8 space-y-6">
         <div data-aos="zoom-in" data-aos-duration="1100">
-          <h1 className="text-4xl font-bold text-center">Contact Us</h1>
+          <h1 className="text-4xl font-bold text-center text-primary">Contact Us</h1>
           <p className="text-lg  text-center">
             Have any questions or need assistance? Feel free to reach out to us!
           </p>

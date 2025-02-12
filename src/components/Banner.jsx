@@ -11,9 +11,10 @@ import { sliderContent } from "../assets/sliderContent";
 const Banner = () => {
   return (
     <div
+      className=""
       style={{
         width: "100%",
-        minHeight: "65vh",
+        // minHeight: "65vh",
         backgroundImage: `url(${bannerImage})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "constian",
@@ -36,12 +37,12 @@ const Banner = () => {
       >
         {sliderContent.map((content) => (
           <SwiperSlide key={content.id} className="text-white">
-            <div className="px-4 md:px-12 w-full min-h-screen flex flex-col-reverse md:flex-row items-center justify-center">
-              <div className="flex flex-col md:flex-1 space-y-4 mt-8 sm:mt-0">
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">
+            <div className="px-4 md:px-12 w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] flex flex-col-reverse md:flex-row items-center justify-center">
+              <div className="flex flex-col md:flex-1 space-y-2 md:space-y-4 mt-8 sm:mt-0">
+                <h1 className="text-xl md:text-4xl lg:text-5xl font-bold">
                   {content.title1}
                 </h1>
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">
+                <h1 className="text-xl md:text-4xl lg:text-5xl font-bold">
                   {content.title2}
                 </h1>
                 <p className="text-xs">{content.description}</p>

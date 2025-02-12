@@ -7,7 +7,7 @@ const AboutPage = () => {
         <h1
           data-aos="zoom-in"
           data-aos-duration="1100"
-          className="text-4xl font-bold text-center"
+          className="text-4xl font-bold text-center text-primary"
         >
           About Us
         </h1>

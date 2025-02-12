@@ -29,7 +29,7 @@ const Navbar = () => {
 
   return (
     // bg-violet-300
-    <div className="navbar bg-background text-text shadow-xl fixed z-30 top-0 max-w-screen-2xl">
+    <div className="navbar bg-primary text-text shadow-xl fixed z-30 top-0 max-w-screen-2xl">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -57,17 +57,7 @@ const Navbar = () => {
         </div>
         <Link to={"/"} className="flex items-center">
           <img className="w-12 h-12" src={questionMark} alt="" />
-          <h1 className="font-bold text-xl">
-            <span className="text-[#FF5733]">W</span>
-            <span className="text-[#FF5733]">h</span>
-            <span className="text-[#FF5733]">e</span>
-            <span className="text-[#FF5733]">r</span>
-            <span className="text-[#FF5733]">e</span>
-            <span className="text-[#3357FF]">I</span>
-            <span className="text-[#3357FF]">s</span>
-            <span className="text-[#b2b221]">I</span>
-            <span className="text-[#b2b221]">t</span>
-          </h1>
+          <h1 className="font-bold text-xl">WhereIsIt</h1>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -108,7 +98,7 @@ const Navbar = () => {
             </button>
           </>
         ) : (
-          <Link className="btn-primary border-none" to={"/login"}>
+          <Link className="btn-primary" to={"/login"}>
             Login
           </Link>
         )}
